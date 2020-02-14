@@ -88,6 +88,8 @@ def print_top(filename):
     for i in range(20):
         print('{}:{}'.format(sorted_values[i][0], sorted_values[i][1]))
 
+# This assessment took 2 hours to complete
+
 
 def main():
     if len(sys.argv) != 3:
