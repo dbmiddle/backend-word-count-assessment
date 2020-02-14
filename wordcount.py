@@ -53,6 +53,44 @@ import sys
 # calls the print_words() and print_top() functions which you must define.
 
 
+import operator
+
+
+def print_words(filename):
+    with open(filename, 'r') as f:
+        contents = f.read()
+        contents = contents.lower()
+        split_contents = contents.split()
+        word_count_dict = {}
+        for word in split_contents:
+            if word not in word_count_dict:
+                word_count_dict[word] = 1
+            else:
+                word_count_dict[word] += 1
+    sorted_dict = sorted(word_count_dict)
+    for word in sorted_dict:
+        print('{}:{}'.format(word, word_count_dict[word]))
+
+
+def print_top(filename):
+    with open(filename, 'r') as f:
+        contents = f.read()
+        contents = contents.lower()
+        split_contents = contents.split()
+        word_count_dict = {}
+        for word in split_contents:
+            if word not in word_count_dict:
+                word_count_dict[word] = 1
+            else:
+                word_count_dict[word] += 1
+    sorted_values = sorted(word_count_dict.items(), key=operator.itemgetter(1), reverse=True)
+    word_count_dict = dict(sorted_values)
+    for i in range(20):
+        print('{}:{}'.format(sorted_values[i][0], sorted_values[i][1]))
+
+# This assessment took 2 hours to complete
+
+
 def main():
     if len(sys.argv) != 3:
         print 'usage: python wordcount.py {--count | --topcount} file'
